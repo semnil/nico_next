@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "nico_next",
+  "description": "ニコニコの連載投稿動画の次に自動で移動する機能拡張",
+  "version": "1.0.3",
+  "page_action": {
+//    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.nicovideo.jp/watch/*"],
+      "js": ["nn_main.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "http://www.nicovideo.jp/watch/*"
+  ]
+}
