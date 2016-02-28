@@ -62,14 +62,17 @@ function next() {
         var descriptions = document.getElementsByClassName('videoDescription');
         for (var i = 0; descriptions && i < descriptions.length; i++) {
             var innerHtmlString = descriptions[i].innerHTML;
-            var symbolIndex = findLastSymbolIndex(innerHtmlString);
-            var nextTag = findFirstTag(innerHtmlString.substr(symbolIndex));
-            if (nextTag && nextTag == 'a') {
-                var nextUrl = getFirstUrl(innerHtmlString.substr(symbolIndex));
-                if (nextUrl) {
-                    window.location.href = nextUrl;
-                } else {
-                    break;
+            for (var lastIndex = innerHtmlString.length;lastIndex >= 0;) {
+                var symbolIndex = findLastSymbolIndex(innerHtmlString.substr(0, lastIndex));
+                lastIndex = symbolIndex;
+                var nextTag = findFirstTag(innerHtmlString.substr(symbolIndex));
+                if (nextTag && nextTag == 'a') {
+                    var nextUrl = getFirstUrl(innerHtmlString.substr(symbolIndex));
+                    if (nextUrl) {
+                        window.location.href = nextUrl;
+                        i = descriptions.length;
+                        break;
+                    }
                 }
             }
         }

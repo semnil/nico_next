@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Tetsuya Shinone</string>
 	<key>Builder Version</key>
-	<string>11601.4.4</string>
+	<string>11601.5.17.1</string>
 	<key>CFBundleDisplayName</key>
 	<string>nico_next</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>CFBundleVersion</key>
 	<string>3</string>
 	<key>Content</key>
