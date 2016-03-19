@@ -73,6 +73,8 @@ function next() {
                         i = descriptions.length;
                         break;
                     }
+                } else if (nextTag) {
+                    break;
                 }
             }
         }

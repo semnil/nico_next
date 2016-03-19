@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "nico_next",
   "description": "ニコニコの連載投稿動画の次に自動で移動する機能拡張",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "page_action": {
 //    "default_icon": "icon.png"
   },
