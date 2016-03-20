@@ -22,17 +22,23 @@ function findFirstTag(str) {
     var index = str.indexOf('<');
     if (index != -1) {
         index += 1;
+        var tagCloseIndex = str.substr(index).indexOf('>');
         var nextSpaceIndex = str.substr(index).indexOf(' ');
-        if (nextSpaceIndex < 0) {
-            nextSpaceIndex = str.substr(index).indexOf('>');
+        if (tagCloseIndex < 0 ||
+            (nextSpaceIndex >= 0 && tagCloseIndex > nextSpaceIndex)) {
+            tagCloseIndex = nextSpaceIndex;
         }
-        return str.substr(index, nextSpaceIndex);
+        return str.substr(index, tagCloseIndex);
     }
     return null;
 }
 
 function getFirstUrl(str) {
+    var nextCloseSymbolIndex = str.indexOf('/');
     var nextHrefIndex = str.indexOf('href=') + 5;
+    if (nextCloseSymbolIndex < nextHrefIndex)
+        return null;
+
     var lastCharIndex = str.substr(nextHrefIndex).indexOf(' ') - 1;
     if (lastCharIndex < 0) {
         lastCharIndex = str.substr(nextHrefIndex).indexOf('>') - 1;
@@ -66,14 +72,12 @@ function next() {
                 var symbolIndex = findLastSymbolIndex(innerHtmlString.substr(0, lastIndex));
                 lastIndex = symbolIndex;
                 var nextTag = findFirstTag(innerHtmlString.substr(symbolIndex));
-                if (nextTag && nextTag == 'a') {
+                if (nextTag) {
                     var nextUrl = getFirstUrl(innerHtmlString.substr(symbolIndex));
                     if (nextUrl) {
                         window.location.href = nextUrl;
                         i = descriptions.length;
-                        break;
                     }
-                } else if (nextTag) {
                     break;
                 }
             }
