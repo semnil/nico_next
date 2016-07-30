@@ -15,6 +15,9 @@ function findLastSymbolIndex(str) {
     if (index == -1) {
         index = str.lastIndexOf('→');
     }
+    if (index == -1) {
+        index = str.lastIndexOf('＞');
+    }
     return index;
 }
 
